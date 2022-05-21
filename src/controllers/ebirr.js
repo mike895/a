@@ -232,7 +232,7 @@ module.exports.callback = async (req, res) => {
 
 if(req.body.metaData.purchaseDetails.type == 'Membership'){
  
- var get_member = await axios.get(`h18.193.100.79:8001/api/resource/Members?fields=["name", "membership_expire_date"]&filters=[["Members","email","=","${req.body.metaData.purchaseDetails.orderId}"]]`,
+ var get_member = await axios.get(`http://18.193.100.79:8001/api/resource/Members?fields=["name", "membership_expire_date"]&filters=[["Members","email","=","${req.body.metaData.purchaseDetails.orderId}"]]`,
   {
     headers: {
       'Authorization': 'token dee8ab57623961f:fff9a603eead917'
