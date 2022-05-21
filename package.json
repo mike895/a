@@ -1,0 +1,19 @@
+{
+  "name": "ebirr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "body-parser": "^1.20.0",
+    "express": "^4.17.3",
+    "meda-bills": "git+https://amanuelg360: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@github.com/medaPay/meda-bills.git",
+    "waafipay-sdk-node": "^0.1.4"
+  }
+}
