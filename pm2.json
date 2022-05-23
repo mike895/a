@@ -1,0 +1,7 @@
+{
+    "apps": [{
+        "name": "callback",
+        "script": "npm",
+        "args": "start"
+    }]
+}

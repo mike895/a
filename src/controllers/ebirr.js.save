@@ -235,7 +235,7 @@ if(req.body.metaData.purchaseDetails.type == 'Membership'){
  var get_member = await axios.get(`http://18.193.100.79:8000/api/resource/Members?fields=["name", "membership_expire_date"]&filters=[["Members","email","=","${req.body.metaData.purchaseDetails.orderId}"]]`,
   {
     headers: {
-      'Authorization': 'token b891245f4ce88b8:ea432910690e983'
+      'Authorization': 'token dee8ab57623961f:fff9a603eead917'
     },
   }
   );
@@ -246,7 +246,7 @@ else if(req.body.metaData.purchaseDetails.type == 'organizationMember'){
   var get_organization = await axios.get(`http://18.193.100.79:8000/api/resource/Organizations?fields=["name", "membership_expire_date"]&filters=[["Organizations","email","=","${req.body.metaData.purchaseDetails.orderId}"]]`,
   {
     headers: {
-      'Authorization': 'token b891245f4ce88b8:ea432910690e983'
+      'Authorization': 'token dee8ab57623961f:fff9a603eead917'
     },
   }
   );
@@ -263,7 +263,7 @@ else if(req.body.metaData.purchaseDetails.type == 'organizationMember'){
   if (detail.data.status) {
     
     console.log("The payment status is: ", detail.data.status);
-   const result = await axios.put(`http://18.193.100.79:8000/api/resource/Payment/${req.body.referenceNumber}`,{
+   const result = await axios.put(`http://18.193.100.79:8001/api/resource/Payment/${req.body.referenceNumber}`,{
       payment_status: 'PAYED',
       payment_method: req.body.paymentMethod,
       //date: formattedDate,
@@ -271,7 +271,7 @@ else if(req.body.metaData.purchaseDetails.type == 'organizationMember'){
       email:req.body.metaData.orderId
     },{
       headers: {
-        'Authorization': 'token b891245f4ce88b8:ea432910690e983'
+        'Authorization': 'token dee8ab57623961f:fff9a603eead917'
       }
     })
     console.log('Payment updated  ', result)
@@ -362,14 +362,14 @@ fetch(`http://localhost:8001/api/resource/Members?fields=["name", "membership_ex
 
 
 if(req.body.metaData.purchaseDetails.type == 'Membership'){
-  const member_result = await axios.put(`http://18.193.100.79:8000/api/resource/Members/${get_member.data.data[0].name}`,{
+  const member_result = await axios.put(`http://18.193.100.79:8001/api/resource/Members/${get_member.data.data[0].name}`,{
      member_status: 'Active',
       membership_expire_date: new_date,
       membership_fee_amount: req.body.amount,
       generate_payment_reference: req.body.referenceNumber
     },{
       headers: {
-        'Authorization': 'token b891245f4ce88b8:ea432910690e983'
+        'Authorization': 'token dee8ab57623961f:fff9a603eead917'
       }
     })
     console.log('memberupdate ', member_result)
@@ -381,14 +381,14 @@ if(req.body.metaData.purchaseDetails.type == 'Membership'){
 
   else if(req.body.metaData.purchaseDetails.type == 'organizationMember'){
 
-    const org_result = await axios.put(`http://18.193.100.79:8000/api/resource/Organizations/${get_organization.data.data[0].name}`,{
+    const org_result = await axios.put(`http://18.193.100.79:8001/api/resource/Organizations/${get_organization.data.data[0].name}`,{
       status: 'Active',
       membership_expire_date: new_date,
       membership_fee: req.body.amount,
       generate_payment_reference: req.body.referenceNumber
     },{
       headers: {
-        'Authorization': 'token b891245f4ce88b8:ea432910690e983'
+        'Authorization': 'token dee8ab57623961f:fff9a603eead917'
       }
     })
     console.log('orgupdate ', org_result)
